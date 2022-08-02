@@ -1,0 +1,31 @@
+-- Create a fishing store database
+
+CREATE TABLE FishingStore (id INTEGER PRIMARY KEY, product TEXT, price INTEGER, quantity INTEGER, customer_rating INTEGER);
+
+INSERT INTO FishingStore VALUES
+
+(1, "Basic Rod", 19.99, 35, 3),
+(2, "Pro Rod", 34.99, 20, 4),
+(3, "Angler Rod", 49.99, 10, 5),
+(4, "Basic Reel", 15.99, 35, 2),
+(5, "Pro Reel", 29.99, 20, 4),
+(6, "Angler Reel", 39.99, 10, 5),
+(7, "4lb Monofilament Fishing Line", 4.99, 50, 2),
+(8, "4lb Fluorocarbon Fishing Line", 7.99, 40, 4),
+(9, "6lb Monofilament Fishing Line", 4.99, 50, 2),
+(10, "6lb Fluorocarbon Fishing Line", 7.99, 40, 4),
+(11, "8lb Monofilament Fishing Line", 4.99, 50, 1),
+(12, "8lb Fluorocarbon Fishing Line", 7.99, 40, 3),
+(13, "8lb Braided Fishing Line", 11.99, 15, 5),
+(14, "Live Bait", 5.99, 20, 5),
+(15, "Artifical Bait", 2.99, 40, 2);
+
+--display the database ordered by price.
+SELECT * FROM FishingStore 
+ORDER BY price;
+
+--what items are the most popular among customers (rating of 3 or higher out of 5)
+SELECT product,customer_rating 
+FROM FishingStore 
+WHERE customer_rating >=3
+ORDER BY customer_rating; 
