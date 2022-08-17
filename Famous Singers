@@ -31,15 +31,15 @@ INSERT INTO hometown VALUES (10,8, "Seattle", "Washington");
 
 /* What hometown does each singer belong to? */
 
-select artist_name, hometown_city, hometown_state
-from singers
-join hometown
-on singers.id= hometown.id;
+SELECT artist_name, hometown_city, hometown_state
+FROM singers
+JOIN hometown
+ON singers.id= hometown.id;
 
 /*What artists are from New Jersey?*/
 
-select artist_name, hometown_city, hometown_state
-from singers
-join hometown
-on singers.id= hometown.id
-where hometown_state= "New Jersey";
+SELECT artist_name, hometown_city, hometown_state
+FROM singers
+JOINhometown
+ON singers.id= hometown.id
+WHERE hometown_state= "New Jersey";
