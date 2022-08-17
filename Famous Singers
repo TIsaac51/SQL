@@ -1,0 +1,45 @@
+
+CREATE table
+singers (id INTEGER PRIMARY KEY, artist_name TEXT, song_name TEXT);
+
+INSERT INTO singers VALUES (1, "Michael Jackson", "Billie Jean");
+INSERT INTO singers VALUES (2, "Micheal Jackson", "Thriller");
+INSERT INTO singers VALUES (3, "Frank Sinatra", "New York, New York");
+INSERT INTO singers VALUES (4, "Bob Marley", "I Shot The Sheriff");
+INSERT INTO singers VALUES (5, "Bob Marley", "Buffalo Soldier");
+INSERT INTO singers VALUES (6, "Bill Withers", "Lean On Me");
+INSERT INTO singers VALUES (7, "John Denver", "Take Me Home, Country Roads");
+INSERT INTO singers VALUES (8, "Billy Joel", "Piano Man");
+INSERT INTO singers VALUES (9, "Whitney Houston", "I Will Always Love You");
+INSERT INTO singers VALUES (10, "Jimi Hendrix", "Purple Haze");
+
+
+Create table hometown (id INTEGER PRIMARY KEY, singerid INTEGER, hometown_city TEXT, hometown_state TEXT);
+
+INSERT INTO hometown VALUES (1,1, "Gary", "Indiana");
+INSERT INTO hometown VALUES (2,1, "Gary", "Indiana");
+INSERT INTO hometown VALUES (3,2, "Hoboken", "New Jersey");
+INSERT INTO hometown VALUES (4,3, "Nine Mile", "Jamaica");
+INSERT INTO hometown VALUES (5,3, "Nine Mile", "Jamaica");
+INSERT INTO hometown VALUES (6,4, "Slab Fork", "West Virginia");
+INSERT INTO hometown VALUES (7,5, "Roswell", "New Mexico");
+INSERT INTO hometown VALUES (8,6, "New York", "New York");
+INSERT INTO hometown VALUES (9,7, "Newark", "New Jersey");
+INSERT INTO hometown VALUES (10,8, "Seattle", "Washington");
+
+
+
+/* What hometown does each singer belong to? */
+
+select artist_name, hometown_city, hometown_state
+from singers
+join hometown
+on singers.id= hometown.id;
+
+/*What artists are from New Jersey?*/
+
+select artist_name, hometown_city, hometown_state
+from singers
+join hometown
+on singers.id= hometown.id
+where hometown_state= "New Jersey";
