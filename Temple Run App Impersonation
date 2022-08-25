@@ -1,0 +1,38 @@
+/*Create a app impersonation of Temple Run with data to test */
+
+CREATE TABLE TempleRun (id INTEGER PRIMARY KEY, username TEXT, score INTEGER, revives INTEGER);
+
+INSERT INTO TempleRun VALUES (1,"Mike98", 1728, 2);
+INSERT INTO TempleRun VALUES (2,"Mike98", 1945, 0);
+INSERT INTO TempleRun VALUES (3,"Sally234", 900, 1);
+INSERT INTO TempleRun VALUES (4,"StarWarsFan87", 2034, 4);
+INSERT INTO TempleRun VALUES (5,"JillSmith", 1056, 1);
+
+/*Power Ups were forgotten, how do we add a column for Power Ups*/
+
+ALTER TABLE TempleRun ADD power_ups_used INTEGER;
+
+/* We are getting Null values for the Power Up column, how do we update how many power ups each user used?*/
+
+UPDATE TempleRun SET power_ups_used= 0 WHERE id= 1;
+UPDATE TempleRun SET power_ups_used= 4 WHERE id= 2;
+UPDATE TempleRun SET power_ups_used= 6 WHERE id= 3;
+UPDATE TempleRun SET power_ups_used= 0 WHERE id= 4;
+UPDATE TempleRun SET power_ups_used= 1 WHERE id= 5;
+
+SELECT * FROM TempleRun;
+
+/* User Mike98 has two entries in our table. We only want the first entry per user, how do we remove Mike98's second entry?*/
+
+DELETE FROM TempleRun WHERE id=2;
+
+SELECT * FROM TempleRun;
+
+/* We now have a gap in id numbers that goes from 1 to 3 following the deletion of Mike98's second entry. How do we reassign id numbers?*/
+
+
+UPDATE TempleRun SET id= 2 WHERE username= "Sally234";
+UPDATE TempleRun SET id= 3 WHERE username= "StarWarsFan87";
+UPDATE TempleRun SET id= 4 WHERE username= "JillSmith";
+
+SELECT * FROM TempleRun;
