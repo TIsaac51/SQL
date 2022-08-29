@@ -1,0 +1,46 @@
+/* In this SQL code I am analyzing a database with multiple databases regarding customer orders statistics*/
+
+1.How many orders were placed in January?
+
+SELECT COUNT(orderid) 
+FROM Bit_DB.JanSales;
+
+2.How many of those orders were for an iPhone?
+
+SELECT COUNT(orderid) 
+FROM bit_db.JanSales
+WHERE product= "iPhone";
+
+3.Select the customer account numbers for all the orders that were placed in February.
+
+SELECT acctnum
+FROM bit_db.customers as cust
+INNER JOIN bit_db.FebSales as FEB
+ON cust.order_id= Feb.orderid;
+
+4.Which product was the cheapest one sold in January, and what was the price?
+
+SELECT DISTINCT product, price
+FROM bit_db.JanSales 
+WHERE price in (SELECT MIN(price) FROM bit_db.JanSales);
+
+5.What is the total revenue for each product sold in January? 
+
+SELECT product, SUM(Price*Quantity) as Revenue
+FROM bit_db.JanSales
+GROUP BY product;
+
+6.Which products were sold in February at 548 Lincoln St, Seattle, WA 98101, how many of each were sold, and what was the total revenue?
+
+SELECT product, SUM(quantity), SUM(price*quantity) as revenue
+FROM bit_db.febsales
+WHERE location= "548 Lincoln St, Seattle, WA 98101"
+GROUP BY product;
+
+7.How many customers ordered more than 2 products at a time in February, and what was the average amount spent for those customers?
+
+SELECT COUNT(cust.acctnum), AVG(quantity*price)
+FROM bit_db.FebSales as Feb
+LEFT JOIN bit_db.customers as cust
+ON feb.orderid=cust.order_id 
+WHERE Feb.quantity>2 ; 
