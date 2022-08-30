@@ -1,0 +1,36 @@
+/* In this SQL code I took Spotify's Top Songs and made the analysis needed to answer the following questions*/
+
+1.How many songs are by or feature Justin Bieber?
+
+SELECT COUNT(ID)
+FROM bit_db.Spotifydata
+WHERE artist_name='Justin Bieber' OR track_name LIKE '%Justin Bieber%';
+
+2.What songs have a popularity over 90 from highest to lowest?
+
+SELECT track_name, popularity
+FROM bit_db.Spotifydata
+WHERE popularity>89 
+ORDER BY popularity DESC;
+
+3.Who are the top 10 artists based on popularity?
+
+SELECT artist_name, popularity
+FROM bit_db.Spotifydata
+WHERE popularity >90 
+ORDER BY popularity DESC
+LIMIT 10;
+
+4.What artist released the longest song? 
+
+SELECT artist_name, MAX(duration_ms)
+FROM bit_db.Spotifydata;
+
+
+5.What's the average danceability for the 10 most popular songs?
+
+SELECT AVG(danceability)
+FROM bit_db.Spotifydata
+WHERE popularity > 90
+ORDER BY popularity DESC
+LIMIT 10;
