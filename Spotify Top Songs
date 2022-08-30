@@ -1,4 +1,4 @@
-/* In this SQL code I took Spotify's Top Songs and made the analysis needed to answer the following questions*/
+/* In this SQL code I took Spotify's Top Songs data set from KAGGLE and made the SQL analysis needed to answer the following questions*/
 
 /*First I created a table for the data*/
 
